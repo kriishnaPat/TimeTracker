@@ -1,0 +1,67 @@
+@page
+@model TimeTracker.Pages.Students.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.SignedIn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.SignedIn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.Math)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.Math)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.Reading)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.Reading)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.TimeIn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.TimeIn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.TimeOut)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.TimeOut)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Student.BarcodeID)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Student.BarcodeID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Student?.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

@@ -1,7 +1,12 @@
-﻿var builder = WebApplication.CreateBuilder(args);
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using TimeIn.Data;
+var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<TimeInContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("TimeInContext") ?? throw new InvalidOperationException("Connection string 'TimeInContext' not found.")));
 
 var app = builder.Build();
 

@@ -1,0 +1,69 @@
+@page
+@model TimeTracker.Pages.Students.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Student</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Student.FirstName" class="control-label"></label>
+                <input asp-for="Student.FirstName" class="form-control" />
+                <span asp-validation-for="Student.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.LastName" class="control-label"></label>
+                <input asp-for="Student.LastName" class="form-control" />
+                <span asp-validation-for="Student.LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Student.SignedIn" /> @Html.DisplayNameFor(model => model.Student.SignedIn)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Student.Math" /> @Html.DisplayNameFor(model => model.Student.Math)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Student.Reading" /> @Html.DisplayNameFor(model => model.Student.Reading)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.TimeIn" class="control-label"></label>
+                <input asp-for="Student.TimeIn" class="form-control" />
+                <span asp-validation-for="Student.TimeIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.TimeOut" class="control-label"></label>
+                <input asp-for="Student.TimeOut" class="form-control" />
+                <span asp-validation-for="Student.TimeOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Student.BarcodeID" class="control-label"></label>
+                <input asp-for="Student.BarcodeID" class="form-control" />
+                <span asp-validation-for="Student.BarcodeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
