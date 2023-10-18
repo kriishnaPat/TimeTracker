@@ -21,6 +21,9 @@ public class IndexModel : PageModel
     }
 
     public IList<Student> Student { get; set; } = default!;
+    public IList<Student> StudentIn { get; set; } = default!;
+
+    public DateTime ButtonClickTimestamp { get; set; }
 
     [BindProperty(SupportsGet = true)]
     public string? SearchString { get; set; }
@@ -31,35 +34,35 @@ public class IndexModel : PageModel
                        select m;
         if (!string.IsNullOrEmpty(SearchString))
         {
-            string[] DATE_TIME_ID = SearchString.Split(' ');
+            ButtonClickTimestamp = DateTime.Now;
+            string[] time = ButtonClickTimestamp.ToString().Split(new[] { ' ' }, 2);
 
-            var student = students.FirstOrDefault(s => s.BarcodeID.ToString().Contains(DATE_TIME_ID[2]));
+            var student = students.FirstOrDefault(s => s.BarcodeID.ToString().Contains(SearchString));
             if (student != null)
             {
-                if (student.SignedIn)
+                if (student.SignedIn == false)
                 {
-                    student.TimeOut = DATE_TIME_ID[1];
-                    student.SignedIn = false;
+                    student.TimeIn = time[1];
+                    student.SignedIn = true;
                 }
                 else
                 {
-                    student.TimeIn = DATE_TIME_ID[1];
-                    student.SignedIn = true;
+                    student.TimeOut = time[1];
+                    student.SignedIn = false;
                 }
                 students = students.Where(s => s.SignedIn == true);
             }
             await _context.SaveChangesAsync();
-
         }
 
-        Student = await students.ToListAsync();
+        StudentIn = await students.ToListAsync();
     }
 
     public async Task OnPostAsync()
     {
         var students = from m in _context.Student
                        select m;
-        if (Student != null)
+        if (students != null)
         {
             foreach (var student in students)
             {

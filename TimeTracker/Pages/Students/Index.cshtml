@@ -14,30 +14,20 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Student[0].FirstName)
+                First Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Student[0].LastName)
+                Last Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Student[0].SignedIn)
+                Math
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Student[0].Math)
+                Reading
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Student[0].Reading)
+                Barcode ID
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].TimeIn)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].TimeOut)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].BarcodeID)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -50,27 +40,18 @@
                 @Html.DisplayFor(modelItem => item.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.SignedIn)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Math)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Reading)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TimeIn)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimeOut)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.BarcodeID)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                <a class="Edit_Links" asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a class="Edit_Links" asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a class="Edit_Links" asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }

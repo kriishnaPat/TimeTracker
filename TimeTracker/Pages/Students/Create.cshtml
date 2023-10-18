@@ -25,11 +25,6 @@
             </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="Student.SignedIn" /> @Html.DisplayNameFor(model => model.Student.SignedIn)
-                </label>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
                     <input class="form-check-input" asp-for="Student.Math" /> @Html.DisplayNameFor(model => model.Student.Math)
                 </label>
             </div>
@@ -37,16 +32,6 @@
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="Student.Reading" /> @Html.DisplayNameFor(model => model.Student.Reading)
                 </label>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.TimeIn" class="control-label"></label>
-                <input asp-for="Student.TimeIn" class="form-control" />
-                <span asp-validation-for="Student.TimeIn" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.TimeOut" class="control-label"></label>
-                <input asp-for="Student.TimeOut" class="form-control" />
-                <span asp-validation-for="Student.TimeOut" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Student.BarcodeID" class="control-label"></label>
