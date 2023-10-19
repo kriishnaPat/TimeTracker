@@ -7,19 +7,18 @@
 
 <h1>Create</h1>
 
-<h4>Student</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Student.FirstName" class="control-label"></label>
+                <label asp-for="Student.FirstName" class="control-label">First Name</label>
                 <input asp-for="Student.FirstName" class="form-control" />
                 <span asp-validation-for="Student.FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Student.LastName" class="control-label"></label>
+                <label asp-for="Student.LastName" class="control-label">Last Name</label>
                 <input asp-for="Student.LastName" class="form-control" />
                 <span asp-validation-for="Student.LastName" class="text-danger"></span>
             </div>
@@ -34,19 +33,19 @@
                 </label>
             </div>
             <div class="form-group">
-                <label asp-for="Student.BarcodeID" class="control-label"></label>
+                <label asp-for="Student.BarcodeID" class="control-label">Barcode ID</label>
                 <input asp-for="Student.BarcodeID" class="form-control" />
                 <span asp-validation-for="Student.BarcodeID" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary Button_Style OnTop" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="Index" class="Button_Style OnTop">Back to List</a>
 </div>
 
 @section Scripts {

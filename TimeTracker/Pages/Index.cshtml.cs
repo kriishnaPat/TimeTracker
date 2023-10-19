@@ -30,8 +30,7 @@ public class IndexModel : PageModel
 
     public async Task OnGetAsync()
     {
-        var students = from m in _context.Student
-                       select m;
+        var students = from m in _context.Student select m;
         if (!string.IsNullOrEmpty(SearchString))
         {
             ButtonClickTimestamp = DateTime.Now;
@@ -50,26 +49,24 @@ public class IndexModel : PageModel
                     student.TimeOut = time[1];
                     student.SignedIn = false;
                 }
-                students = students.Where(s => s.SignedIn == true);
             }
             await _context.SaveChangesAsync();
         }
 
-        StudentIn = await students.ToListAsync();
+        StudentIn = await students.OrderByDescending(s => s.SignedIn).ToListAsync();
     }
 
     public async Task OnPostAsync()
     {
-        var students = from m in _context.Student
-                       select m;
+        var students = from m in _context.Student select m;
         if (students != null)
         {
             foreach (var student in students)
             {
                 if (student != null)
                 {
-                    student.TimeIn = "";
-                    student.TimeOut = "";
+                    student.TimeIn = null;
+                    student.TimeOut = null;
                     student.SignedIn = false;
                 }
             }
@@ -78,4 +75,42 @@ public class IndexModel : PageModel
         }
     }
 
+    public string CalculateRowStyle(Student student)
+    {
+        if (student.SignedIn)
+        {
+            return "Green_Row";
+        }
+        else if(student.TimeOut != null)
+        {
+            return "Red_Row";
+        }
+        else
+        {
+            return "Normal_Row";
+        }
+
+        //    DateTime currentTime = DateTime.Now;
+        //    string timein = student.TimeIn;
+        //    string timeout = student.TimeIn;
+
+        //    if (student.)
+        //    {
+        //        return "Green_Row";
+        //    }
+        //    else if (someValue < 0)
+        //    {
+        //        return "Yellow_Row";
+        //    }else if ()
+        //    {
+        //        return "Red_Row";
+
+        //    }
+        //    else
+        //    {
+        //        return "Normal_Row";
+        //    }
+        //}
+
+    }
 }

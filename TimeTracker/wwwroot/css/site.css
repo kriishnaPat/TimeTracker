@@ -8,10 +8,6 @@
   }
 }
 
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
 html {
   position: relative;
   min-height: 100%;
@@ -19,4 +15,62 @@ html {
 
 body {
   margin-bottom: 60px;
+}
+
+.Button_Style {
+    appearance: none;
+    background-color: #33b5e5;
+    border: 1px solid rgba(27, 31, 35, .15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.Button_Style.SideBySide{
+    margin-left: 10px;
+}
+
+.Button_Style.OnTop{
+    margin-top: 10px;
+}
+
+.Button_Style.hover {
+    background-color: #33b5e9;
+}
+
+.Button_Style.focus {
+    box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
+    outline: none;
+}
+
+.Green_Row {
+    background-color: lightgreen;
+}
+
+.Yellow_Row {
+    background-color: lightyellow;
+}
+
+.Red_Row {
+    background-color: red;
+}
+
+.Normal_Row {
+    background-color: #33b5e5;
 }

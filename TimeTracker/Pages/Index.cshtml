@@ -6,19 +6,20 @@
 
 <h1>Clock In & Out</h1>
 
-<form>
-    <p>
-        <input type="text" asp-for="SearchString" onfocus="this.value=''" autofocus />
-        <input type="submit" value="Scan" id="myButton"/>
-    </p>
-</form>
+<div class="container d-flex">
+    <form class="">
+        <p>
+            <input type="text" asp-for="SearchString" onfocus="this.value=''" autofocus />
+            <input type="submit" value="Scan" class="Button_Style SideBySide" id="myButton" />
+        </p>
+    </form>
 
-<form method="post">
-    <p>
-        <input type="submit" value="Clear Records" />
-    </p>
-</form>
-
+    <form method="post">
+        <p>
+            <input type="submit" class="Button_Style SideBySide" value="Clear Records" />
+        </p>
+    </form>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -47,7 +48,7 @@
         {
             @foreach (var item in Model.StudentIn)
             {
-                <tr>
+                <tr class="@Model.CalculateRowStyle(item)">
                     <td>
                         @Html.DisplayFor(modelItem => item.FirstName)
                     </td>
