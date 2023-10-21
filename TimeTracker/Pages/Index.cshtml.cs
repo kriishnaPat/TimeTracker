@@ -1,17 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using NuGet.Packaging.Signing;
-using TimeIn.Data;
+using OfficeOpenXml;
 using TimeTracker.Models;
+using System.IO;
+using System;
 
 namespace TimeTracker.Pages;
 
@@ -59,7 +53,16 @@ public class IndexModel : PageModel
                     student.TimeIn = timeIn[1];
                     student.TimeOut = timeOut[1];
                     student.SignedIn = true;
-                }
+                    _context.History.Add(new History
+                    {
+                        Id = student.Id,
+                        FirstName = student.FirstName,
+                        LastName = student.LastName,
+                        Date = timeIn[0],
+                        TimeIn = student.TimeIn,
+                        TimeOut = student.TimeOut
+                    });
+                    ;}
             }
             await _context.SaveChangesAsync();
         }
@@ -70,6 +73,7 @@ public class IndexModel : PageModel
     public async Task OnPostAsync()
     {
         var students = from m in _context.Student select m;
+
         if (students != null)
         {
             foreach (var student in students)

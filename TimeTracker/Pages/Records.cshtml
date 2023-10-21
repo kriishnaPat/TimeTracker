@@ -1,0 +1,52 @@
+﻿@page
+@model TimeTracker.Pages.Students.RecordsModel
+@{
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                First Name
+            </th>
+            <th>
+                Last Name
+            </th>
+            <th>
+                Date
+            </th>
+            <th>
+                Time In
+            </th>
+            <th>
+                Time Out
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.StudentIn != null)
+        {
+            @foreach (var item in Model.StudentIn)
+            {
+                <tr class="Normal_Row">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TimeIn)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TimeOut)
+                    </td>
+                </tr>
+
+            }
+        }
+    </tbody>
+</table>

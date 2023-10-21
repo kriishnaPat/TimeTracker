@@ -15,5 +15,7 @@ namespace TimeIn.Data
         }
 
         public DbSet<TimeTracker.Models.Student> Student { get; set; } = default!;
+        public DbSet<TimeTracker.Models.History> History { get; set; } = default!;
+
     }
 }

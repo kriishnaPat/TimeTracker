@@ -22,5 +22,22 @@ namespace TimeTracker.Models
         public int BarcodeID { get; set; }
 
     }
+
+    public class History
+    {
+        public int Id { get; set; }
+
+        public string? FirstName { get; set; }
+
+        public string? LastName { get; set; }
+
+        public string? Date { get; set; }
+
+        public string? TimeIn { get; set; }
+
+        public string? TimeOut { get; set; }
+    }
+
+
 }
 
