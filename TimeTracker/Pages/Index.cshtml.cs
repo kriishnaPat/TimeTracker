@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using NuGet.Packaging.Signing;
 using TimeIn.Data;
 using TimeTracker.Models;
 
@@ -47,7 +49,7 @@ public class IndexModel : PageModel
                 }
                 else
                 {
-                    newTime = Timestamp.AddMinutes(1);
+                    newTime = Timestamp.AddMinutes(15);
                 }
 
                 string[] timeOut = newTime.ToString().Split(new[] { ' ' }, 2);
@@ -57,11 +59,6 @@ public class IndexModel : PageModel
                     student.TimeIn = timeIn[1];
                     student.TimeOut = timeOut[1];
                     student.SignedIn = true;
-                }
-                else
-                {
-                    student.TimeOut = timeIn[1];
-                    student.SignedIn = false;
                 }
             }
             await _context.SaveChangesAsync();
@@ -90,6 +87,16 @@ public class IndexModel : PageModel
 
     public string CalculateRowStyle(Student student)
     {
+        int TimeAlert = 0;
+        if(student.Math && student.Reading)
+        {
+            TimeAlert = 50;
+        }
+        else
+        {
+            TimeAlert = 20;
+        }
+
         DateTime CurrentTime = DateTime.Now;
         if (student.TimeOut == null)
         {
@@ -98,19 +105,31 @@ public class IndexModel : PageModel
         else
         {
             DateTime today = DateTime.Today;
+            DateTime rightNow = DateTime.Now;
             string[] time = today.ToString().Split(new[] { ' ' }, 2);
-            string timecomp = time[0] + " " + student.TimeOut;
-            DateTime dateTime2 = DateTime.Parse(timecomp);
-            int result = DateTime.Compare(CurrentTime, dateTime2);
-            if (result < 0)
+            string timeIn = time[0] + " " + student.TimeIn;
+            string timeOut = time[0] + " " + student.TimeOut;
+
+            DateTime TimeIn = DateTime.Parse(timeIn);
+            DateTime TimeOut = DateTime.Parse(timeOut);
+
+            int comparisonResult = DateTime.Compare(rightNow, TimeIn.AddMinutes(TimeAlert));
+
+            if (comparisonResult < 0)
             {
                 return "Green_Row";
-
+            }
+            else if (DateTime.Compare(rightNow, TimeOut) > 0)
+            {
+                return "Red_Row";
+            }
+            else if (comparisonResult > 0 || comparisonResult == 0)
+            {
+                return "Yellow_Row";
             }
             else
             {
-                return "Red_Row";
-
+                return "Normal_Row";
             }
         }
     }
