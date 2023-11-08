@@ -34,7 +34,7 @@ public class IndexModel : PageModel
             Timestamp = DateTime.Now;
             DateTime newTime = DateTime.Now;
             string[] timeIn = Timestamp.ToString().Split(new[] { ' ' }, 2);
-            var student = students.FirstOrDefault(s => s.BarcodeID.ToString().Contains(SearchString));
+            var student = students.FirstOrDefault(s => s.BarcodeID.Contains(SearchString));
             if (student != null)
             {
                 if (student.Math && student.Reading)
