@@ -19,7 +19,7 @@ namespace TimeTracker.Models
 
         public string? TimeOut { get; set; }
 
-        public int BarcodeID { get; set; }
+        public string? BarcodeID { get; set; }
 
     }
 
