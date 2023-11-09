@@ -43,7 +43,7 @@ public class IndexModel : PageModel
                 }
                 else
                 {
-                    newTime = Timestamp.AddMinutes(15);
+                    newTime = Timestamp.AddMinutes(30);
                 }
 
                 string[] timeOut = newTime.ToString().Split(new[] { ' ' }, 2);
