@@ -1,19 +1,28 @@
 ﻿@page
-@model TimeTracker.Pages.Students.RecordsModel
+@model IndexModel
 @{
-    ViewData["Title"] = "Records";
+    ViewData["Title"] = "Home page";
     Layout = "_Layout";
 }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<h1>Clock In & Out</h1>
 
 <div class="container d-flex">
     <form class="">
         <p>
-            <input type="text" asp-for="SearchString"/>
-            <input type="submit" value="Search By Date" class="Button_Style SideBySide"/>
+            <input type="text" asp-for="SearchString" onfocus="this.value=''" autofocus />
+            <input type="submit" value="Scan" class="Button_Style SideBySide" id="myButton" />
+        </p>
+    </form>
+
+    <form method="post">
+        <p>
+            <input type="submit" class="Button_Style SideBySide" value="Clear Records" />
         </p>
     </form>
 </div>
-
 <table class="table">
     <thead>
         <tr>
@@ -21,10 +30,10 @@
                 First Name
             </th>
             <th>
-                Last Name
+                Math
             </th>
             <th>
-                Date
+                Reading
             </th>
             <th>
                 Time In
@@ -39,15 +48,15 @@
         {
             @foreach (var item in Model.StudentIn)
             {
-                <tr class="Normal_Row">
+                <tr class="@Model.CalculateRowStyle(item)">
                     <td>
                         @Html.DisplayFor(modelItem => item.FirstName)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LastName)
+                        @Html.DisplayFor(modelItem => item.Math)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Date)
+                        @Html.DisplayFor(modelItem => item.Reading)
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.TimeIn)
@@ -61,3 +70,4 @@
         }
     </tbody>
 </table>
+

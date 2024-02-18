@@ -1,75 +1,52 @@
 ﻿@page
-@model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+@model TimeTracker.Pages.loginModel
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="refresh" content="1140">
+    <title>@ViewData["Title"] - TimeTracker</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/TimeTracker.styles.css" asp-append-version="true" />
+</head>
 
+<header>
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <div class="container">
+            <a class="navbar-brand" asp-area="" asp-page="/Index">&#x23f0 TimeTracker</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+            </div>
+            <h5 class="Top_Right_Navbar">Kumon Walker Lakes Plaza</h5>
+        </div>
+    </nav>
+</header>
 
-<h1>Clock In & Out</h1>
+<h1 class="loginH1">Login</h1>
 
-<div class="container d-flex">
-    <form class="">
-        <p>
-            <input type="text" asp-for="SearchString" onfocus="this.value=''" autofocus />
-            <input type="submit" value="Scan" class="Button_Style SideBySide" id="myButton" />
-        </p>
-    </form>
-
-    <form method="post">
-        <p>
-            <input type="submit" class="Button_Style SideBySide" value="Clear Records" />
-        </p>
-    </form>
+<div class="container d-flex login">
+    <div class="row">
+        <div class="col-md-4">
+            <form class="">
+                <p>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group1">
+                        <label asp-for="user" class="control-label">Username</label>
+                        <input type="text" asp-for="user" onfocus="this.value=''" autofocus />
+                    </div>
+                    <div class="form-group1">
+                        <label asp-for="pass" class="control-label">Password</label>
+                        <input type="text" asp-for="pass" onfocus="this.value=''" />
+                    </div>
+                    <div class="form-group2">
+                        <input type="submit" value="Login" class="Button_Style SideBySide" id="loginButton" />
+                    </div>
+                </p>
+            </form>
+        </div>
+    </div>
 </div>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                First Name
-            </th>
-            <th>
-                Math
-            </th>
-            <th>
-                Reading
-            </th>
-            <th>
-                Time In
-            </th>
-            <th>
-                Time Out
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-        @if (Model.StudentIn != null)
-        {
-            @foreach (var item in Model.StudentIn)
-            {
-                <tr class="@Model.CalculateRowStyle(item)">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Math)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Reading)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TimeIn)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TimeOut)
-                    </td>
-                </tr>
-
-            }
-        }
-    </tbody>
-</table>
-
-
-
 
